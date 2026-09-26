@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+
+    <!-- ================================================= -->
+    <!-- LOGIN PAGE -->
+    <!-- ================================================= -->
+
+    <section id="login-page" class="auth-page">
+
+        <div class="auth-card">
+
+            <div class="auth-logo">
+                🤖
+            </div>
+
+            <h1>AI Career Assistant</h1>
+
+            <p class="auth-subtitle">
+                Your AI-powered career companion
+            </p>
+
+
+            <form id="login-form">
+
+                <div class="form-group">
+
+                    <label for="login-email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="login-email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="login-password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="login-password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    id="login-button"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <div
+                id="login-error"
+                class="error-message"
+            ></div>
+
+
+            <p class="switch-auth">
+
+                Don't have an account?
+
+                <button
+                    type="button"
+                    onclick="showRegister()"
+                >
+                    Register
+                </button>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- REGISTER PAGE -->
+    <!-- ================================================= -->
+
+    <section
+        id="register-page"
+        class="auth-page hidden"
+    >
+
+        <div class="auth-card">
+
+            <div class="auth-logo">
+                🤖
+            </div>
+
+            <h1>Create Account</h1>
+
+            <p class="auth-subtitle">
+                Start your AI career journey
+            </p>
+
+
+            <form id="register-form">
+
+                <div class="form-group">
+
+                    <label for="register-name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="register-name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="register-email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="register-email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="register-password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="register-password"
+                        placeholder="Create a password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    id="register-button"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <div
+                id="register-message"
+                class="message-text"
+            ></div>
+
+
+            <p class="switch-auth">
+
+                Already have an account?
+
+                <button
+                    type="button"
+                    onclick="showLogin()"
+                >
+                    Login
+                </button>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- CHAT PAGE -->
+    <!-- ================================================= -->
+
+    <section
+        id="chat-page"
+        class="chat-page hidden"
+    >
+
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="header">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    🤖
+                </div>
+
+                <div class="logo-text">
+
+                    <h1>
+                        AI Career Assistant
+                    </h1>
+
+                    <span>
+                        Your AI-powered career companion
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-right">
+
+                <div class="user-info">
+
+                    <span class="user-icon">
+                        👤
+                    </span>
+
+                    <span id="user-name">
+                        User
+                    </span>
+
+                </div>
+
+
+                <button
+                    class="logout-button"
+                    onclick="logout()"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CHAT ================= -->
+
+        <main
+            id="chat-container"
+            class="chat-container"
+        >
+
+        </main>
+
+
+        <!-- ================= INPUT ================= -->
+
+        <footer class="input-area">
+
+            <div class="input-wrapper">
+
+
+                <!-- Resume upload -->
+
+                <label
+                    for="resume-file"
+                    class="upload-button"
+                    title="Upload Resume"
+                >
+
+                    📎
+
+                </label>
+
+
+                <input
+                    type="file"
+                    id="resume-file"
+                    accept=".pdf,.png,.jpg,.jpeg"
+                    hidden
+                >
+
+
+                <!-- Text input -->
+
+                <input
+                    type="text"
+                    id="message-input"
+                    placeholder="Ask me anything about your career..."
+                    autocomplete="off"
+                >
+
+
+                <!-- Send -->
+
+                <button
+                    id="send-button"
+                    class="send-button"
+                    onclick="sendMessage()"
+                    title="Send message"
+                >
+
+                    ➤
+
+                </button>
+
+            </div>
+
+
+            <div class="input-help">
+
+                <span>
+                    💡 Ask about DSA, Java, Python,
+                    SQL, interviews, careers...
+                </span>
+
+                <span>
+                    📎 PDF / JPG / PNG · Max 5 MB
+                </span>
+
+            </div>
+
+        </footer>
+
+
+    </section>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
